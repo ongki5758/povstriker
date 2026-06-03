@@ -49,3 +49,7 @@ Environment variables yang umumnya dibutuhkan di platform deploy Cloudflare:
 - `CLOUDFLARE_API_TOKEN`
 - `CLOUDFLARE_ACCOUNT_ID`
 - `NODE_VERSION=22`
+
+Catatan runtime Cloudflare:
+- static assets disajikan dari binding `ASSETS`
+- adapter saat ini juga mengaktifkan `IMAGES` dan `SESSION`

@@ -8,6 +8,14 @@ Project ini menggunakan `@astrojs/cloudflare` adapter dan workflow deploy berbas
 - Deploy command: `npm run deploy`
 - Preview/local worker command: `npm run preview`
 
+## Required Cloudflare bindings
+Astro Cloudflare adapter pada build saat ini mengaktifkan binding berikut:
+- `ASSETS` — static assets dari `dist/client`
+- `IMAGES` — Cloudflare Images binding
+- `SESSION` — KV namespace untuk session
+
+Jika environment deploy Anda tidak otomatis menyediakan binding tersebut, deployment runtime dapat gagal meskipun build sukses.
+
 ## Output build
 - Static assets: `dist/client`
 - Server bundle: `dist/server`
@@ -24,11 +32,12 @@ Set environment variable berikut di platform deploy Anda:
 Token harus memiliki minimal permission:
 
 ### Account permissions
-- `Cloudflare Pages: Edit` atau permission Cloudflare yang sesuai dengan target deploy Anda
 - `Workers Scripts: Edit`
 - `Account Settings: Read`
+- `Workers KV Storage: Edit` jika Anda mengelola KV binding `SESSION`
+- `Images: Edit` / permission Cloudflare Images yang relevan bila binding `IMAGES` dipakai pada account Anda
 
-> Catatan: bila deploy command menggunakan `wrangler deploy`, token wajib memiliki izin Workers yang sesuai. Bila memakai `wrangler pages deploy`, token juga perlu izin Pages.
+> Karena workflow saat ini memakai `wrangler deploy`, permission `Cloudflare Pages: Edit` tidak lagi menjadi requirement utama. Yang dibutuhkan adalah permission Worker/runtime yang sesuai.
 
 ## Commands
 Build:
