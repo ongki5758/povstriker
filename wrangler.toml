@@ -1,4 +1,4 @@
-name = "povstrike-site"
+name = "povstriker"
 compatibility_date = "2026-06-03"
 
 # Static Astro output for Cloudflare Pages lives in dist/
