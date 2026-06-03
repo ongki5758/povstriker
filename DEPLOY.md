@@ -1,47 +1,55 @@
-# Deploy POV Strike ke Cloudflare
+# Deploy POV Strike ke Cloudflare Worker
 
-## Opsi yang direkomendasikan: Cloudflare Pages
-Karena project ini adalah static Astro site, deployment paling tepat adalah Cloudflare Pages.
+Project ini menggunakan `@astrojs/cloudflare` adapter dan workflow deploy berbasis Wrangler.
 
-## Konfigurasi build
-- Framework preset: `Astro`
+## Build config
+- Root directory: `/`
 - Build command: `npm run build`
-- Build output directory: `dist`
-- Node.js version: `22`
+- Deploy command: `npm run deploy`
+- Preview/local worker command: `npm run preview`
 
-## Langkah deploy via dashboard Cloudflare Pages
-1. Push project ini ke Git provider Anda.
-2. Masuk ke Cloudflare Dashboard.
-3. Buka **Workers & Pages** > **Create application** > **Pages**.
-4. Connect repository project `povstrike.com`.
-5. Set konfigurasi berikut:
-   - **Framework preset**: `Astro`
-   - **Build command**: `npm run build`
-   - **Build output directory**: `dist`
-   - **Node.js version**: `22`
-6. Deploy.
+## Output build
+- Static assets: `dist/client`
+- Server bundle: `dist/server`
+- Worker entry shim: `worker.js`
 
-## Custom domain
-Setelah deploy berhasil:
-1. Tambahkan custom domain `povstrike.com`
-2. Tambahkan juga `www.povstrike.com` bila diperlukan
-3. Pastikan DNS diarahkan melalui Cloudflare
+## Environment variables
+Set environment variable berikut di platform deploy Anda:
 
-## Build lokal sebelum deploy
+- `CLOUDFLARE_API_TOKEN`
+- `CLOUDFLARE_ACCOUNT_ID`
+- `NODE_VERSION=22`
+
+## Permission token Cloudflare
+Token harus memiliki minimal permission:
+
+### Account permissions
+- `Cloudflare Pages: Edit` atau permission Cloudflare yang sesuai dengan target deploy Anda
+- `Workers Scripts: Edit`
+- `Account Settings: Read`
+
+> Catatan: bila deploy command menggunakan `wrangler deploy`, token wajib memiliki izin Workers yang sesuai. Bila memakai `wrangler pages deploy`, token juga perlu izin Pages.
+
+## Commands
+Build:
 ```bash
-npm install
-npm run check
 npm run build
 ```
 
-## wrangler.toml
-File `wrangler.toml` disediakan untuk dokumentasi/workflow tambahan, tetapi deployment static ini tetap paling cocok melalui Cloudflare Pages.
+Deploy:
+```bash
+npm run deploy
+```
 
-## Kapan perlu adapter Cloudflare?
-Adapter seperti `@astrojs/cloudflare` baru diperlukan jika situs diubah menjadi:
-- SSR
-- middleware runtime
-- edge rendering
-- API handler di server
+## Jika deploy dari platform yang meminta custom commands
+Gunakan:
 
-Saat ini project belum membutuhkan itu.
+### Build command
+```bash
+npm run build
+```
+
+### Deploy command
+```bash
+npm run deploy
+```

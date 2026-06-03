@@ -1,12 +1,12 @@
 # POV Strike
 
-Website resmi POV Strike berbasis Astro + Tailwind CSS.
+Website resmi POV Strike berbasis Astro + Tailwind CSS dengan adapter Cloudflare.
 
 ## Stack
 - Astro 6
+- `@astrojs/cloudflare`
 - Tailwind CSS 4
-- Static site output (`dist/`)
-- Cocok untuk deploy di Cloudflare Pages
+- Wrangler
 
 ## Requirements
 - Node.js 22+
@@ -18,42 +18,34 @@ npm install
 npm run dev
 ```
 
-Aplikasi lokal akan berjalan di `http://localhost:4321`.
-
-## Quality check
-```bash
-npm run check
-```
-
-## Production build
+## Build
 ```bash
 npm run build
 ```
 
-Hasil build akan tersedia di folder:
-```bash
-dist/
-```
+Output build Cloudflare:
+- server bundle: `dist/server`
+- static assets: `dist/client`
 
-## Preview build
+## Preview lokal dengan Wrangler
 ```bash
 npm run preview
 ```
 
-## Struktur route utama
-- `/` — homepage
-- `/produk` — katalog produk
-- `/produk/ikan-mas-harian-formula` — halaman detail produk
+## Deploy
+```bash
+npm run deploy
+```
 
-## Deploy ke Cloudflare Pages
-Gunakan konfigurasi berikut:
+## Route utama
+- `/`
+- `/produk`
+- `/produk/ikan-mas-harian-formula`
 
-- Framework preset: `Astro`
-- Build command: `npm run build`
-- Build output directory: `dist`
-- Node.js version: `22`
+## Cloudflare Worker setup
+Project ini sekarang menggunakan Astro Cloudflare adapter, sehingga cocok untuk workflow deploy berbasis Worker/Wrangler.
 
-Lihat detail tambahan di [`DEPLOY.md`](./DEPLOY.md).
-
-## Catatan
-Project ini saat ini menggunakan output static, sehingga tidak memerlukan adapter SSR Cloudflare.
+Environment variables yang umumnya dibutuhkan di platform deploy Cloudflare:
+- `CLOUDFLARE_API_TOKEN`
+- `CLOUDFLARE_ACCOUNT_ID`
+- `NODE_VERSION=22`

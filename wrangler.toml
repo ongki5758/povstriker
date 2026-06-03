@@ -1,8 +1,7 @@
 name = "povstriker"
+main = "worker.js"
 compatibility_date = "2026-06-03"
 
-# Static Astro output for Cloudflare Pages lives in dist/
-# This file is optional for the current setup and mainly serves
-# as project documentation / future Cloudflare workflow support.
-
-pages_build_output_dir = "dist"
+[assets]
+directory = "dist/client"
+binding = "ASSETS"
