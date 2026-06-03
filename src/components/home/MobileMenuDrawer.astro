@@ -1,3 +1,6 @@
+---
+import { buildWhatsAppUrl } from '../../lib/config';
+---
 <div id="mobile-menu-overlay" class="pointer-events-none fixed inset-0 z-[60] bg-black/60 opacity-0 backdrop-blur-sm transition-opacity duration-300"></div>
 <div id="mobile-menu-drawer" class="fixed inset-y-0 left-0 z-[70] flex w-[280px] -translate-x-full flex-col bg-white shadow-2xl transition-transform duration-300">
   <div class="flex items-center justify-between border-b border-gray-200 p-5">
@@ -21,6 +24,6 @@
   </div>
   <div class="mt-auto border-t border-gray-200 bg-[#F8F9FA]/50 p-5">
     <p class="mb-3 text-center text-xs font-medium text-gray-500">Ada pertanyaan?</p>
-    <a href="https://wa.me/6280000000000?text=Halo%20POV%20Strike%2C%20saya%20ingin%20konsultasi%20produk." target="_blank" rel="noopener noreferrer" class="flex w-full items-center justify-center rounded-xl border border-gray-200 bg-white py-2.5 text-sm font-semibold text-gray-800 shadow-sm transition-colors hover:border-[#1B4332] hover:text-[#1B4332]">Hubungi Admin WhatsApp</a>
+    <a href={buildWhatsAppUrl('Halo POV Strike, saya ingin konsultasi produk.')} target="_blank" rel="noopener noreferrer" class="flex w-full items-center justify-center rounded-xl border border-gray-200 bg-white py-2.5 text-sm font-semibold text-gray-800 shadow-sm transition-colors hover:border-[#1B4332] hover:text-[#1B4332]">Hubungi Admin WhatsApp</a>
   </div>
 </div>

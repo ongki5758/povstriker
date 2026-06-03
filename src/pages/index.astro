@@ -19,6 +19,7 @@ import MobileCta from '../components/home/MobileCta.astro';
 import MobileBottomNav from '../components/home/MobileBottomNav.astro';
 import MobileMenuDrawer from '../components/home/MobileMenuDrawer.astro';
 import HomeScript from '../components/home/HomeScript.astro';
+import { buildAbsoluteUrl } from '../lib/config';
 
 const fishSpecies = [
   {
@@ -148,22 +149,22 @@ const faqs = [
 
 const pageTitle = 'POV Strike | Lebih Banyak Strike. Tanpa Nunggu Lama.';
 const pageDescription = 'POV Strike adalah essen pancing premium untuk pemancing Indonesia dengan formula spesifik target ikan, mudah dicampur, pengiriman cepat, dan dukungan COD.';
-const canonical = 'https://povstrike.com/';
-const ogImage = 'https://povstrike.com/og-image.jpg';
+const canonical = buildAbsoluteUrl('/');
+const ogImage = buildAbsoluteUrl('/og-image.jpg');
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     {
       '@type': 'Organization',
       name: 'POV Strike',
-      url: 'https://povstrike.com',
-      logo: 'https://povstrike.com/logo-pov-strike.svg',
+      url: buildAbsoluteUrl('/'),
+      logo: buildAbsoluteUrl('/logo-pov-strike.svg'),
       sameAs: [],
     },
     {
       '@type': 'WebSite',
       name: 'POV Strike',
-      url: 'https://povstrike.com',
+      url: buildAbsoluteUrl('/'),
       inLanguage: 'id-ID',
     },
     {
@@ -174,7 +175,7 @@ const jsonLd = {
       isPartOf: {
         '@type': 'WebSite',
         name: 'POV Strike',
-        url: 'https://povstrike.com',
+        url: buildAbsoluteUrl('/'),
       },
     },
     {
@@ -186,9 +187,9 @@ const jsonLd = {
         name: 'POV Strike',
       },
       image: [
-        'https://povstrike.com/og-image.jpg',
-        'https://povstrike.com/images/product-pov-ikan-mas.webp',
-        'https://povstrike.com/images/product-pov-lele.webp',
+        buildAbsoluteUrl('/og-image.jpg'),
+        buildAbsoluteUrl('/images/product-pov-ikan-mas.webp'),
+        buildAbsoluteUrl('/images/product-pov-lele.webp'),
       ],
       category: 'Essen Pancing',
       offers: {

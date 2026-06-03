@@ -1,3 +1,6 @@
+---
+import { buildWhatsAppUrl } from '../../lib/config';
+---
 <header class="sticky top-0 z-50 border-b border-gray-200 bg-white shadow-sm">
   <div class="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between md:h-20">
@@ -20,7 +23,7 @@
       </nav>
 
       <div class="flex items-center gap-4 md:gap-6">
-        <a href="https://wa.me/6280000000000?text=Halo%20POV%20Strike%2C%20saya%20ingin%20konsultasi%20produk." target="_blank" rel="noopener noreferrer" class="hidden text-gray-800 transition-colors hover:text-[#1B4332] md:block" aria-label="WhatsApp POV Strike">
+        <a href={buildWhatsAppUrl('Halo POV Strike, saya ingin konsultasi produk.')} target="_blank" rel="noopener noreferrer" class="hidden text-gray-800 transition-colors hover:text-[#1B4332] md:block" aria-label="WhatsApp POV Strike">
           <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 20l1.3-4.6A8 8 0 1112 20a7.96 7.96 0 01-3.6-.8L3 20z"></path></svg>
         </a>
         <a href="/produk" class="hidden rounded-full bg-[#1B4332] px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-colors hover:bg-[#133224] md:inline-flex">Beli Sekarang</a>

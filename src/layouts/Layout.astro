@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { SITE_URL } from '../lib/config';
 
 interface Props {
 	title?: string;
@@ -11,7 +12,7 @@ interface Props {
 }
 
 const siteName = 'POV Strike';
-const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://povstrike.com';
+const siteUrl = SITE_URL;
 const {
 	title = 'POV Strike',
 	description = 'Essen pancing premium POV Strike untuk perairan Indonesia. Lebih banyak strike tanpa nunggu lama.',

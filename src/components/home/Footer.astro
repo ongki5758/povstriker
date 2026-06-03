@@ -1,3 +1,6 @@
+---
+import { buildWhatsAppUrl } from '../../lib/config';
+---
 <footer class="border-t border-[#0b1c15] bg-[#112a20] py-12 text-gray-300 md:py-16">
   <div class="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
     <div class="mb-12 grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12 lg:grid-cols-4">
@@ -14,7 +17,7 @@
           <li><a href="/#bundles" class="transition-colors hover:text-[#F77F00]">Paket Bundling</a></li>
           <li><a href="/#academy" class="transition-colors hover:text-[#F77F00]">Akademi POV Strike</a></li>
           <li><a href="/#reviews" class="transition-colors hover:text-[#F77F00]">Ulasan</a></li>
-          <li><a href="https://wa.me/6280000000000?text=Halo%20POV%20Strike%2C%20saya%20ingin%20konsultasi%20produk." target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-[#F77F00]">Kontak</a></li>
+          <li><a href={buildWhatsAppUrl('Halo POV Strike, saya ingin konsultasi produk.')} target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-[#F77F00]">Kontak</a></li>
         </ul>
       </div>
       <div>

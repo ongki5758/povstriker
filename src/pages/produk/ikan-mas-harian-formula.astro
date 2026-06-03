@@ -7,15 +7,15 @@ import MobileBottomNav from '../../components/home/MobileBottomNav.astro';
 import MobileMenuDrawer from '../../components/home/MobileMenuDrawer.astro';
 import HomeScript from '../../components/home/HomeScript.astro';
 import StarRating from '../../components/StarRating.astro';
+import { WHATSAPP_NUMBER, buildAbsoluteUrl, buildWhatsAppUrl } from '../../lib/config';
 
 const productName = 'Ikan Mas Harian Formula';
 const shortName = 'Ikan Mas Harian';
-const whatsappNumber = '6280000000000';
-const whatsappText = encodeURIComponent(`Halo POV Strike, saya ingin pesan ${productName}. Mohon info stok, cara pakai, dan rekomendasi racikannya.`);
+const whatsappNumber = WHATSAPP_NUMBER;
 const pageTitle = `${productName} | POV Strike`;
 const pageDescription = 'Single product page POV Strike untuk Ikan Mas Harian Formula. Formula harian untuk kolam favorit dengan aroma stabil, racikan simpel, dan performa yang konsisten.';
-const canonical = 'https://povstrike.com/produk/ikan-mas-harian-formula';
-const ogImage = 'https://povstrike.com/images/product-pov-ikan-mas.webp';
+const canonical = buildAbsoluteUrl('/produk/ikan-mas-harian-formula');
+const ogImage = buildAbsoluteUrl('/images/product-pov-ikan-mas.webp');
 
 const galleryImages = [
   {
@@ -114,8 +114,8 @@ const jsonLd = {
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://povstrike.com/' },
-        { '@type': 'ListItem', position: 2, name: 'Produk', item: 'https://povstrike.com/produk' },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: buildAbsoluteUrl('/') },
+        { '@type': 'ListItem', position: 2, name: 'Produk', item: buildAbsoluteUrl('/produk') },
         { '@type': 'ListItem', position: 3, name: productName, item: canonical },
       ],
     },
@@ -234,7 +234,7 @@ const jsonLd = {
           </div>
 
           <div class="mt-9 flex flex-col gap-3 sm:flex-row">
-            <a href={`https://wa.me/${whatsappNumber}?text=${whatsappText}`} class="inline-flex items-center justify-center rounded-full bg-[#1B4332] px-8 py-3.5 font-medium text-white shadow-md transition-all hover:-translate-y-0.5 hover:bg-[#133224]">
+            <a href={buildWhatsAppUrl(`Halo POV Strike, saya ingin pesan ${productName}. Mohon info stok, cara pakai, dan rekomendasi racikannya.`)} class="inline-flex items-center justify-center rounded-full bg-[#1B4332] px-8 py-3.5 font-medium text-white shadow-md transition-all hover:-translate-y-0.5 hover:bg-[#133224]">
               Pesan via WhatsApp
             </a>
             <a href="#review" class="inline-flex items-center justify-center rounded-full border-2 border-gray-200 bg-white px-8 py-3.5 font-medium text-gray-800 transition-colors hover:border-[#1B4332] hover:text-[#1B4332]">
@@ -316,7 +316,7 @@ const jsonLd = {
               </div>
             ))}
           </div>
-          <a href={`https://wa.me/${whatsappNumber}?text=${whatsappText}`} class="mt-8 inline-flex rounded-full bg-[#1B4332] px-6 py-3 font-medium text-white transition-colors hover:bg-[#133224]">
+          <a href={buildWhatsAppUrl(`Halo POV Strike, saya ingin konsultasi sebelum order ${productName}.`)} class="mt-8 inline-flex rounded-full bg-[#1B4332] px-6 py-3 font-medium text-white transition-colors hover:bg-[#133224]">
             Konsultasi Sebelum Order
           </a>
         </div>
@@ -437,7 +437,7 @@ const jsonLd = {
       <h2 class="mb-4 text-3xl font-bold md:text-4xl">Siap Pakai {shortName}?</h2>
       <p class="mx-auto mb-8 max-w-xl text-gray-300">Order sekarang dan konsultasikan racikan umpan Anda langsung dengan admin POV Strike agar takaran awalnya lebih pas dan tidak perlu banyak trial-error.</p>
       <div class="flex flex-col justify-center gap-4 sm:flex-row">
-        <a href={`https://wa.me/${whatsappNumber}?text=${whatsappText}`} class="rounded-full bg-[#F77F00] px-8 py-3.5 font-medium text-white shadow transition-colors hover:bg-[#d66e00]">Pesan Sekarang</a>
+        <a href={buildWhatsAppUrl(`Halo POV Strike, saya ingin pesan ${productName}. Mohon info stok, cara pakai, dan rekomendasi racikannya.`)} class="rounded-full bg-[#F77F00] px-8 py-3.5 font-medium text-white shadow transition-colors hover:bg-[#d66e00]">Pesan Sekarang</a>
         <a href="#review" class="rounded-full border-2 border-white bg-transparent px-8 py-3.5 font-medium text-white transition-colors hover:bg-white hover:text-[#1B4332]">Baca Review Dulu</a>
       </div>
     </div>

@@ -9,12 +9,11 @@ Project ini menggunakan `@astrojs/cloudflare` adapter dan workflow deploy berbas
 - Preview/local worker command: `npm run preview`
 
 ## Required Cloudflare bindings
-Astro Cloudflare adapter pada build saat ini mengaktifkan binding berikut:
+Astro Cloudflare adapter untuk project ini disiapkan untuk runtime yang realistis ke depan:
 - `ASSETS` — static assets dari `dist/client`
-- `IMAGES` — Cloudflare Images binding
-- `SESSION` — KV namespace untuk session
+- `SESSION` — KV namespace binding untuk session/runtime state
 
-Jika environment deploy Anda tidak otomatis menyediakan binding tersebut, deployment runtime dapat gagal meskipun build sukses.
+Tambahan image binding tidak diwajibkan karena adapter disetel ke `imageService: 'passthrough'`.
 
 ## Output build
 - Static assets: `dist/client`
@@ -28,16 +27,28 @@ Set environment variable berikut di platform deploy Anda:
 - `CLOUDFLARE_ACCOUNT_ID`
 - `NODE_VERSION=22`
 
+## Environment variables project
+Karena ke depan project ini akan memakai environment variables, pola yang direkomendasikan adalah menambahkan semua secret/config dari dashboard Cloudflare sebagai Worker environment variables, bukan hardcode di source code.
+
+Contoh umum:
+- `PUBLIC_SITE_URL`
+- `PUBLIC_WHATSAPP_NUMBER`
+- `API_BASE_URL`
+- `SESSION_KV_NAMESPACE_ID`
+- token atau secret lain sesuai kebutuhan fitur berikutnya
+
+Template lokal/env awal tersedia di file:
+- `.dev.vars.example`
+
 ## Permission token Cloudflare
 Token harus memiliki minimal permission:
 
 ### Account permissions
 - `Workers Scripts: Edit`
 - `Account Settings: Read`
-- `Workers KV Storage: Edit` jika Anda mengelola KV binding `SESSION`
-- `Images: Edit` / permission Cloudflare Images yang relevan bila binding `IMAGES` dipakai pada account Anda
+- `Workers KV Storage: Edit`
 
-> Karena workflow saat ini memakai `wrangler deploy`, permission `Cloudflare Pages: Edit` tidak lagi menjadi requirement utama. Yang dibutuhkan adalah permission Worker/runtime yang sesuai.
+> Karena workflow saat ini memakai `wrangler deploy`, permission `Cloudflare Pages: Edit` tidak lagi menjadi requirement utama.
 
 ## Commands
 Build:

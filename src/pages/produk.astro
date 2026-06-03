@@ -7,19 +7,20 @@ import MobileBottomNav from '../components/home/MobileBottomNav.astro';
 import MobileMenuDrawer from '../components/home/MobileMenuDrawer.astro';
 import HomeScript from '../components/home/HomeScript.astro';
 import StarRating from '../components/StarRating.astro';
+import { WHATSAPP_NUMBER, buildAbsoluteUrl, buildWhatsAppUrl } from '../lib/config';
 
-const whatsappNumber = '6280000000000';
+const whatsappNumber = WHATSAPP_NUMBER;
 const pageTitle = '10 Produk POV Strike | Semua Produk Essen Pancing';
 const pageDescription = 'Lihat 10 produk POV Strike untuk ikan mas, lele, nila, patin, dan kebutuhan mancing harian sampai galatama.';
-const canonical = 'https://povstrike.com/produk';
-const ogImage = 'https://povstrike.com/images/product-pov-ikan-mas.webp';
+const canonical = buildAbsoluteUrl('/produk');
+const ogImage = buildAbsoluteUrl('/images/product-pov-ikan-mas.webp');
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://povstrike.com/' },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: buildAbsoluteUrl('/') },
         { '@type': 'ListItem', position: 2, name: 'Produk', item: canonical },
       ],
     },
@@ -210,7 +211,6 @@ const features = [
 
       <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
         {products.map((product) => {
-          const whatsappText = encodeURIComponent(`Halo POV Strike, saya ingin tanya produk ${product.name}. Mohon info stok dan rekomendasinya.`);
           return (
             <article class:list={['group overflow-hidden rounded-[24px] bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg', product.tag === 'Best Seller' ? 'border-2 border-[#1B4332]/15 ring-1 ring-[#1B4332]/10' : 'border border-gray-200']}>
               <div class="relative aspect-square overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50">
@@ -244,10 +244,10 @@ const features = [
                 </div>
 
                 <div class="mt-5 grid grid-cols-2 gap-3">
-                  <a href={product.available ? product.href : `https://wa.me/${whatsappNumber}?text=${whatsappText}`} class:list={['inline-flex items-center justify-center rounded-full px-4 py-3 text-sm font-medium transition-colors', product.available ? 'bg-[#1B4332] text-white hover:bg-[#133224]' : 'bg-[#F77F00] text-white hover:bg-[#d66e00]']}>
+                  <a href={product.available ? product.href : buildWhatsAppUrl(`Halo POV Strike, saya ingin tanya produk ${product.name}. Mohon info stok dan rekomendasinya.`)} class:list={['inline-flex items-center justify-center rounded-full px-4 py-3 text-sm font-medium transition-colors', product.available ? 'bg-[#1B4332] text-white hover:bg-[#133224]' : 'bg-[#F77F00] text-white hover:bg-[#d66e00]']}>
                     {product.available ? 'Lihat Detail' : 'Tanya Produk'}
                   </a>
-                  <a href={`https://wa.me/${whatsappNumber}?text=${whatsappText}`} class="inline-flex items-center justify-center rounded-full border-2 border-gray-200 bg-white px-4 py-3 text-sm font-medium text-gray-800 transition-colors hover:border-[#1B4332] hover:text-[#1B4332]">
+                  <a href={buildWhatsAppUrl(`Halo POV Strike, saya ingin tanya produk ${product.name}. Mohon info stok dan rekomendasinya.`)} class="inline-flex items-center justify-center rounded-full border-2 border-gray-200 bg-white px-4 py-3 text-sm font-medium text-gray-800 transition-colors hover:border-[#1B4332] hover:text-[#1B4332]">
                     WhatsApp
                   </a>
                 </div>
@@ -264,7 +264,7 @@ const features = [
       <h2 class="mb-4 text-3xl font-bold md:text-4xl">Masih Bingung Pilih Produk?</h2>
       <p class="mx-auto mb-8 max-w-xl text-gray-300">Ceritakan target ikan dan jenis spot Anda. Admin POV Strike bantu pilihkan formula yang paling relevan.</p>
       <div class="flex flex-col justify-center gap-4 sm:flex-row">
-        <a href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Halo POV Strike, saya ingin dibantu pilih produk yang paling cocok untuk kebutuhan mancing saya.')}`} class="rounded-full bg-[#F77F00] px-8 py-3.5 font-medium text-white shadow transition-colors hover:bg-[#d66e00]">Konsultasi Sekarang</a>
+        <a href={buildWhatsAppUrl('Halo POV Strike, saya ingin dibantu pilih produk yang paling cocok untuk kebutuhan mancing saya.')} class="rounded-full bg-[#F77F00] px-8 py-3.5 font-medium text-white shadow transition-colors hover:bg-[#d66e00]">Konsultasi Sekarang</a>
         <a href="/produk/ikan-mas-harian-formula" class="rounded-full border-2 border-white bg-transparent px-8 py-3.5 font-medium text-white transition-colors hover:bg-white hover:text-[#1B4332]">Lihat Best Seller</a>
       </div>
     </div>

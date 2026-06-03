@@ -1,0 +1,7 @@
+# Public runtime config
+PUBLIC_SITE_URL=https://povstrike.com
+PUBLIC_WHATSAPP_NUMBER=6281234567890
+
+# Cloudflare deploy/runtime config
+CLOUDFLARE_ACCOUNT_ID=your_account_id
+SESSION_KV_NAMESPACE_ID=your_kv_namespace_id
