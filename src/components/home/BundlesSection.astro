@@ -1,0 +1,43 @@
+---
+interface Props {
+  bundles: {
+    title: string;
+    desc: string;
+    price: string;
+    featured: boolean;
+    badge: string;
+    image: string;
+    alt: string;
+    href?: string;
+  }[]
+}
+const { bundles } = Astro.props;
+---
+<section id="bundles" class="bg-[#F8F9FA] py-16 md:py-24">
+  <div class="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
+    <div class="mb-12 text-center">
+      <h2 class="mb-4 text-2xl font-bold text-gray-800 md:text-3xl lg:text-4xl">Rekomendasi Produk Pilihan</h2>
+      <p class="mx-auto max-w-2xl text-base text-gray-500">Highlight product 1-3 yang paling relevan untuk pemancing pemula sampai all-rounder.</p>
+    </div>
+    <div class="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
+      {bundles.map((bundle) => (
+        <div class:list={['relative flex flex-col overflow-hidden rounded-2xl bg-white transition-all', bundle.featured ? 'border-2 border-[#F77F00] shadow-md hover:shadow-xl lg:-translate-y-4' : 'border border-gray-200 shadow-sm hover:shadow-lg']}>
+          <div class:list={['absolute left-4 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider', bundle.featured ? 'top-4 bg-[#F77F00] text-white' : 'top-4 bg-[#1B4332] text-white']}>
+            {bundle.badge}
+          </div>
+          <div class:list={['flex h-48 items-center justify-center border-b border-gray-200 p-6', bundle.featured ? 'bg-orange-50/50 pt-12' : 'bg-gray-50 pt-12']}>
+            <img src={bundle.image} alt={bundle.alt} class:list={['object-contain drop-shadow-lg', bundle.featured ? 'h-32 w-auto' : 'h-28 w-auto']} loading="lazy" />
+          </div>
+          <div class="flex flex-grow flex-col p-6 text-center">
+            <h3 class="mb-2 text-xl font-bold text-gray-800">{bundle.title}</h3>
+            <p class="mb-6 flex-grow text-sm text-gray-500">{bundle.desc}</p>
+            <div class="mb-6 text-2xl font-bold text-[#1B4332]">{bundle.price}</div>
+            <a href={bundle.href ?? '/produk'} class:list={['block w-full rounded-full py-3 text-center font-medium transition-colors', bundle.featured ? 'bg-[#F77F00] text-white shadow hover:bg-[#d66e00]' : 'border-2 border-[#1B4332] bg-white text-[#1B4332] hover:bg-[#1B4332] hover:text-white']}>
+              Lihat Produk
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

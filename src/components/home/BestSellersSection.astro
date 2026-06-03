@@ -1,0 +1,41 @@
+---
+import StarRating from '../StarRating.astro';
+interface Props { products: { name: string; tag: string; rating: string; price: string }[] }
+const { products } = Astro.props;
+---
+<section id="best-sellers" class="border-t border-gray-200 bg-white py-16">
+  <div class="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
+    <div class="mb-10 flex items-end justify-between">
+      <div>
+        <h2 class="mb-2 text-2xl font-bold text-gray-800 md:text-3xl">Formula Paling Ampuh</h2>
+        <p class="text-sm text-gray-500 md:text-base">Formula pilihan utama para pemancing Indonesia.</p>
+      </div>
+      <a href="/produk" class="hidden font-semibold text-[#1B4332] transition-colors hover:text-[#F77F00] md:inline-flex">Lihat Semua →</a>
+    </div>
+    <div id="shop" class="hide-scroll -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-6 md:gap-6 lg:mx-0 lg:grid lg:grid-cols-4 lg:px-0 lg:pb-0">
+      {products.map((product, index) => (
+        <div class="group relative flex w-[240px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white transition-shadow hover:shadow-lg md:w-auto">
+          <div class="absolute top-3 left-3 z-10 rounded border border-gray-200 bg-white/90 px-2 py-1 text-xs font-bold text-[#1B4332] backdrop-blur-sm">Cocok untuk: {product.tag}</div>
+          <div class="relative aspect-square overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50">
+            <img src={index % 2 === 0 ? '/images/product-pov-ikan-mas.webp' : '/images/product-pov-lele.webp'} alt={product.name} class="h-full w-full object-contain p-4 transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+          </div>
+          <div class="flex flex-grow flex-col p-4">
+            <div class="mb-2 flex items-center gap-1">
+              <StarRating count={1} class="!text-yellow-400" />
+              <span class="text-xs font-semibold text-gray-800">{product.rating}</span>
+            </div>
+            <h3 class="mb-1 text-sm leading-tight font-bold text-gray-800 md:text-base">{product.name}</h3>
+            <div class="mt-auto pt-4"><span class="text-lg font-bold text-[#1B4332]">{product.price}</span></div>
+          </div>
+          <div class="grid grid-cols-4 gap-2 px-4 pb-4">
+            <a href={index === 0 ? '/produk/ikan-mas-harian-formula' : '/produk'} class="col-span-3 rounded-xl border border-gray-200 bg-[#F8F9FA] py-2 text-center text-sm font-medium text-gray-800 transition-colors hover:bg-gray-200">Lihat Produk</a>
+            <button class="col-span-1 flex items-center justify-center rounded-xl bg-[#1B4332] text-white shadow-sm transition-colors hover:bg-[#133224]" aria-label="Tambah ke keranjang">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+    <div class="mt-8 text-center md:hidden"><a href="/produk" class="inline-flex rounded-full border border-gray-200 px-6 py-2 font-semibold text-[#1B4332] transition-colors hover:text-[#F77F00]">Lihat Semua Produk</a></div>
+  </div>
+</section>

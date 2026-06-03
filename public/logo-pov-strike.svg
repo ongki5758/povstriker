@@ -1,0 +1,22 @@
+<svg width="640" height="180" viewBox="0 0 640 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="povGrad" x1="24" y1="24" x2="156" y2="156" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1B4332"/>
+      <stop offset="1" stop-color="#255742"/>
+    </linearGradient>
+    <linearGradient id="strikeAccent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#F59E0B"/>
+      <stop offset="1" stop-color="#F77F00"/>
+    </linearGradient>
+  </defs>
+  <rect x="12" y="12" width="156" height="156" rx="38" fill="url(#povGrad)"/>
+  <path d="M40 92C57 66 115 58 139 92C115 126 57 118 40 92Z" fill="white"/>
+  <circle cx="75" cy="88" r="6" fill="#1B4332"/>
+  <path d="M128 92L157 76L149 92L157 108L128 92Z" fill="#F59E0B"/>
+  <path d="M98 58C112 46 128 41 144 40" stroke="#FDE68A" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="146" cy="39" r="7" fill="#FDE68A"/>
+  <text x="196" y="82" fill="#1F2937" font-family="Inter, Arial, sans-serif" font-size="56" font-weight="800">POV Strike</text>
+  <text x="198" y="118" fill="#6B7280" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="600" letter-spacing="0.18em">ESSEN PANCING INDONESIA</text>
+  <rect x="198" y="130" width="182" height="24" rx="12" fill="url(#strikeAccent)"/>
+  <text x="213" y="147" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="800" letter-spacing="0.12em">LEBIH BANYAK STRIKE</text>
+</svg>

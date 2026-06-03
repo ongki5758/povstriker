@@ -1,0 +1,510 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/home/Header.astro';
+import Footer from '../../components/home/Footer.astro';
+import MobileCta from '../../components/home/MobileCta.astro';
+import MobileBottomNav from '../../components/home/MobileBottomNav.astro';
+import MobileMenuDrawer from '../../components/home/MobileMenuDrawer.astro';
+import HomeScript from '../../components/home/HomeScript.astro';
+import StarRating from '../../components/StarRating.astro';
+
+const productName = 'Ikan Mas Harian Formula';
+const shortName = 'Ikan Mas Harian';
+const whatsappNumber = '6280000000000';
+const whatsappText = encodeURIComponent(`Halo POV Strike, saya ingin pesan ${productName}. Mohon info stok, cara pakai, dan rekomendasi racikannya.`);
+const pageTitle = `${productName} | POV Strike`;
+const pageDescription = 'Single product page POV Strike untuk Ikan Mas Harian Formula. Formula harian untuk kolam favorit dengan aroma stabil, racikan simpel, dan performa yang konsisten.';
+const canonical = 'https://povstrike.com/produk/ikan-mas-harian-formula';
+const ogImage = 'https://povstrike.com/images/product-pov-ikan-mas.webp';
+
+const galleryImages = [
+  {
+    src: '/images/product-pov-ikan-mas.webp',
+    thumb: '/images/product-pov-ikan-mas.webp',
+    alt: 'POV Strike Ikan Mas Harian Formula tampak depan',
+    label: 'Hero Product',
+  },
+  {
+    src: '/images/product-bottle-1.webp',
+    thumb: '/images/product-bottle-1.webp',
+    alt: 'Botol produk POV Strike untuk thumbnail gallery pertama',
+    label: 'Bottle Detail',
+  },
+  {
+    src: '/images/product-bottle-2.webp',
+    thumb: '/images/product-bottle-2.webp',
+    alt: 'Botol produk POV Strike untuk thumbnail gallery kedua',
+    label: 'Close-up',
+  },
+  {
+    src: '/images/hero-fishing.webp',
+    thumb: '/images/hero-fishing.webp',
+    alt: 'Ilustrasi penggunaan produk POV Strike saat memancing',
+    label: 'In Action',
+  },
+];
+
+const quickStats = [
+  ['4.8/5', 'Rating Pemancing'],
+  ['3–5 tetes', 'Takaran Awal'],
+  ['Rp39.000', 'Harga Per Botol'],
+];
+
+const highlights = [
+  'Aroma stabil untuk pemakaian harian',
+  'Mudah dicampur ke umpan racikan favorit',
+  'Cocok untuk kolam ikan mas dengan kondisi air berubah',
+  'Praktis dipakai pemula maupun pemancing rutin',
+];
+
+const specs = [
+  ['Target Ikan', 'Ikan Mas'],
+  ['Kategori', 'Essen Pancing Harian'],
+  ['Kondisi Ideal', 'Kolam harian, sesi santai, spot favorit'],
+  ['Karakter Aroma', 'Stabil, ringan, cepat diterima ikan'],
+  ['Takaran Awal', '3–5 tetes per 500 gram umpan'],
+  ['Harga', 'Rp39.000'],
+];
+
+const useCases = [
+  ['Kolam Harian', 'Pas untuk mancing santai dengan target ikan mas aktif makan.'],
+  ['Air Berubah', 'Tetap nyaman dipakai saat kondisi kolam tidak selalu konsisten.'],
+  ['Racikan Simpel', 'Cocok untuk Anda yang ingin hasil lebih rapi tanpa racikan ribet.'],
+];
+
+const mixSteps = [
+  'Siapkan 500 gram umpan dasar atau racikan favorit Anda.',
+  'Tambahkan 3–5 tetes Ikan Mas Harian Formula secara merata.',
+  'Aduk selama 1–2 menit sampai aroma benar-benar tercampur.',
+  'Diamkan sekitar 5 menit agar formula lebih menyatu dengan umpan.',
+  'Tes respons ikan, lalu sesuaikan dosis jika diperlukan.',
+];
+
+const reviews = [
+  {
+    name: 'Pak Darto',
+    city: 'Lamongan',
+    score: '4.9',
+    quote: 'Saya pakai buat kolam harian, hasilnya enak. Umpan jadi lebih hidup dan sambaran terasa lebih cepat dibanding racikan biasa.',
+  },
+  {
+    name: 'Mas Reza',
+    city: 'Bekasi',
+    score: '4.8',
+    quote: 'Yang saya suka itu aromanya nggak terlalu nyegrak tapi tetap jalan. Cocok buat saya yang suka racikan simpel dan cepat siap.',
+  },
+  {
+    name: 'Pak Andri',
+    city: 'Bandung',
+    score: '4.7',
+    quote: 'Sudah coba beberapa kali di kolam langganan, respon ikan cukup bagus. Buat harian menurut saya ini aman dan gampang dipakai.',
+  },
+];
+
+const faqs = [
+  ['Apakah formula ini cocok untuk pemula?', 'Ya. Produk ini sangat cocok untuk pemula karena takaran penggunaannya sederhana dan mudah dicampur ke berbagai jenis umpan.'],
+  ['Apakah bisa dipakai untuk lomba?', 'Bisa sebagai base formula, tetapi produk ini lebih difokuskan untuk kebutuhan harian dan sesi santai.'],
+  ['Berapa dosis yang aman untuk mulai?', 'Mulai dari 3–5 tetes per 500 gram umpan. Setelah itu Anda bisa menyesuaikan dengan kondisi kolam dan respons ikan.'],
+  ['Apakah tersedia konsultasi sebelum order?', 'Ya. Anda bisa langsung chat admin via WhatsApp untuk tanya stok, cara pakai, dan rekomendasi racikan.'],
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://povstrike.com/' },
+        { '@type': 'ListItem', position: 2, name: 'Produk', item: 'https://povstrike.com/produk' },
+        { '@type': 'ListItem', position: 3, name: productName, item: canonical },
+      ],
+    },
+    {
+      '@type': 'Product',
+      name: productName,
+      image: [ogImage],
+      description: pageDescription,
+      brand: {
+        '@type': 'Brand',
+        name: 'POV Strike',
+      },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.8',
+        reviewCount: '27',
+      },
+      offers: {
+        '@type': 'Offer',
+        priceCurrency: 'IDR',
+        price: '39000',
+        availability: 'https://schema.org/InStock',
+        url: canonical,
+      },
+    },
+  ],
+};
+---
+
+<Layout title={pageTitle} description={pageDescription} canonical={canonical} ogImage={ogImage} lang="id" bodyClass="bg-[#F8F9FA] font-sans text-gray-800 antialiased">
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+  </Fragment>
+
+  <Header />
+
+  <section class="relative overflow-hidden border-b border-gray-200 bg-white">
+    <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#1B4332]/6 to-transparent"></div>
+    <div class="relative mx-auto max-w-[1200px] px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
+      <div class="mb-6 text-sm text-gray-500">
+        <a href="/" class="transition-colors hover:text-[#1B4332]">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/produk" class="transition-colors hover:text-[#1B4332]">Produk</a>
+        <span class="mx-2">/</span>
+        <span class="text-gray-800">{shortName}</span>
+      </div>
+
+      <div class="grid grid-cols-1 gap-12 lg:grid-cols-[1.02fr_0.98fr] lg:items-start lg:gap-16">
+        <div>
+          <div class="overflow-hidden rounded-[32px] border border-gray-200 bg-gradient-to-br from-slate-50 via-white to-blue-50 shadow-[0_20px_80px_rgba(27,67,50,0.08)]">
+            <div class="flex items-center justify-between border-b border-gray-100 px-5 py-4 text-xs font-semibold tracking-wide text-gray-500 uppercase">
+              <span>Best Seller Harian</span>
+              <span>POV Strike</span>
+            </div>
+            <div class="aspect-square w-full overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50">
+              <img id="product-main-image" src={galleryImages[0].src} alt={galleryImages[0].alt} class="h-full w-full object-cover" loading="eager" />
+            </div>
+          </div>
+
+          <div class="mt-4 grid grid-cols-4 gap-3">
+            {galleryImages.map((image, idx) => (
+              <button
+                type="button"
+                class:list={['product-thumb group overflow-hidden rounded-2xl border bg-white p-2 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md', idx === 0 ? 'border-[#1B4332] ring-2 ring-[#1B4332]/10' : 'border-gray-200']}
+                data-image={image.src}
+                data-alt={image.alt}
+                aria-label={`Lihat gambar ${image.label}`}
+              >
+                <div class="aspect-square overflow-hidden rounded-xl bg-gradient-to-br from-slate-50 to-blue-50">
+                  <img src={image.thumb} alt={image.alt} class="h-full w-full object-cover" loading="lazy" />
+                </div>
+                <div class="mt-2 truncate text-center text-[11px] font-semibold text-gray-500">{image.label}</div>
+              </button>
+            ))}
+          </div>
+
+          <div class="mt-6 grid grid-cols-3 gap-3 border-t border-gray-200 pt-6">
+            {quickStats.map(([value, label]) => (
+              <div class="text-center">
+                <div class="text-lg font-bold text-[#1B4332] md:text-2xl">{value}</div>
+                <div class="mt-1 text-xs font-medium text-gray-500 md:text-sm">{label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <div class="mb-5 flex flex-wrap items-center gap-3">
+            <span class="rounded-full bg-[#1B4332] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white">Single Product</span>
+            <span class="rounded-full bg-[#1B4332]/8 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[#1B4332]">Ikan Mas</span>
+            <span class="rounded-full bg-orange-100 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[#F77F00]">Formula Harian</span>
+          </div>
+
+          <h1 class="text-3xl leading-tight font-bold text-gray-800 md:text-5xl">{productName}</h1>
+          <p class="mt-4 max-w-xl text-base leading-relaxed text-gray-500 md:text-lg">
+            Formula harian untuk pemancing yang ingin racikan tetap simpel, aroma lebih stabil, dan respons ikan yang lebih cepat di kolam favorit.
+          </p>
+
+          <div class="mt-5 flex flex-wrap items-center gap-3 text-sm font-semibold text-gray-700">
+            <div class="flex items-center gap-2">
+              <StarRating class="!text-yellow-400" />
+              <span>4.8 / 5 rating</span>
+            </div>
+            <span class="hidden h-1 w-1 rounded-full bg-gray-300 sm:block"></span>
+            <span>27 review pemancing</span>
+            <span class="hidden h-1 w-1 rounded-full bg-gray-300 sm:block"></span>
+            <span>Siap order via WhatsApp</span>
+          </div>
+
+          <div class="mt-7 rounded-3xl border border-[#1B4332]/10 bg-[#1B4332]/[0.03] p-5 md:p-6">
+            <div class="flex flex-wrap items-end gap-3">
+              <div class="text-3xl font-bold text-[#1B4332] md:text-4xl">Rp39.000</div>
+              <span class="pb-1 text-sm text-gray-500">/ botol</span>
+            </div>
+            <div class="mt-2 text-sm leading-relaxed text-gray-500">Pilihan aman untuk pemancing harian, pemula, dan siapa pun yang ingin racikan cepat tanpa banyak trial-error.</div>
+          </div>
+
+          <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+            <a href={`https://wa.me/${whatsappNumber}?text=${whatsappText}`} class="inline-flex items-center justify-center rounded-full bg-[#1B4332] px-8 py-3.5 font-medium text-white shadow-md transition-all hover:-translate-y-0.5 hover:bg-[#133224]">
+              Pesan via WhatsApp
+            </a>
+            <a href="#review" class="inline-flex items-center justify-center rounded-full border-2 border-gray-200 bg-white px-8 py-3.5 font-medium text-gray-800 transition-colors hover:border-[#1B4332] hover:text-[#1B4332]">
+              Lihat Review
+            </a>
+          </div>
+
+          <div class="mt-10 border-t border-gray-200 pt-6">
+            <h2 class="text-2xl font-bold text-gray-800">Kenapa produk ini banyak dipilih?</h2>
+            <div class="mt-6 border-t border-gray-200/70 pt-1">
+              {highlights.map((item) => (
+                <div class="grid grid-cols-[18px_minmax(0,1fr)] gap-3 border-b border-gray-100 py-3">
+                  <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#1B4332]"></span>
+                  <p class="text-sm font-medium leading-relaxed text-gray-700 md:text-base">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20">
+    <div class="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
+        <div>
+          <h2 class="text-2xl font-bold text-gray-800 md:text-3xl">Spesifikasi Produk</h2>
+          <div class="mt-6 border-t border-gray-200 pt-2">
+            {specs.map(([label, value]) => (
+              <div class="grid grid-cols-1 gap-1.5 border-b border-gray-100 py-3 sm:grid-cols-[minmax(0,170px)_minmax(0,1fr)] sm:items-center sm:gap-4">
+                <span class="text-[11px] font-bold uppercase tracking-[0.14em] text-gray-400">{label}</span>
+                <span class="text-sm font-medium leading-relaxed text-gray-800 md:text-base sm:text-right">{value}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-2xl font-bold text-gray-800 md:text-3xl">Tentang Produk Ini</h2>
+          <div class="mt-6 space-y-4 text-sm leading-relaxed text-gray-500 md:text-base">
+            <p>
+              Halaman ini dibuat khusus untuk satu produk agar pengunjung bisa langsung fokus pada manfaat utama, cara pakai, dan alasan kenapa formula ini cocok untuk kebutuhan mancing harian.
+            </p>
+            <p>
+              Ikan Mas Harian Formula cocok untuk pemancing yang butuh formula aman, simpel, dan mudah dipadukan ke umpan favorit. Karakter aromanya stabil, tidak berlebihan, dan nyaman dipakai berulang untuk sesi santai maupun rutinitas harian.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-gray-200 bg-white py-16 md:py-20">
+    <div class="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+        <div>
+          <h2 class="text-2xl font-bold text-gray-800 md:text-3xl">Cara Pakai</h2>
+          <div class="mt-6 border-t border-gray-200 pt-1">
+            {mixSteps.map((step, idx) => (
+              <div class="grid grid-cols-[32px_minmax(0,1fr)] gap-4 border-b border-gray-100 py-4">
+                <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#1B4332] text-sm font-bold text-white">{idx + 1}</div>
+                <p class="pt-1 text-sm font-medium leading-relaxed text-gray-700 md:text-base">{step}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-2xl font-bold text-gray-800 md:text-3xl">Cocok Dipakai Untuk</h2>
+          <div class="mt-6 border-t border-gray-200 pt-1">
+            {useCases.map(([title, desc]) => (
+              <div class="grid grid-cols-[18px_minmax(0,1fr)] gap-3 border-b border-gray-100 py-4">
+                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#1B4332]"></span>
+                <div>
+                  <h3 class="text-base font-bold text-gray-800 md:text-lg">{title}</h3>
+                  <p class="mt-1.5 text-sm leading-relaxed text-gray-500 md:text-base">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <a href={`https://wa.me/${whatsappNumber}?text=${whatsappText}`} class="mt-8 inline-flex rounded-full bg-[#1B4332] px-6 py-3 font-medium text-white transition-colors hover:bg-[#133224]">
+            Konsultasi Sebelum Order
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-gray-200 bg-white py-16 md:py-20">
+    <div class="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
+      <div class="mb-10 max-w-2xl lg:mb-12">
+        <h2 class="text-2xl font-bold text-gray-800 md:text-3xl">Visual Produk & Penggunaan</h2>
+        <p class="mt-3 text-sm leading-relaxed text-gray-500 md:text-base">
+          Visual tambahan ini membantu pengunjung melihat detail produk lebih dekat sekaligus memahami konteks pemakaiannya di sesi mancing harian.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-4 lg:grid-cols-[1.1fr_0.9fr] lg:gap-6">
+        <div class="group relative overflow-hidden rounded-[32px] border border-gray-200 bg-[#EDF2F4]">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="/images/product-pov-ikan-mas.webp" alt="Visual utama Ikan Mas Harian Formula POV Strike" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" loading="lazy" />
+          </div>
+          <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent p-6 md:p-8">
+            <p class="max-w-md text-sm font-medium leading-relaxed text-white md:text-base">Formula harian yang dibuat untuk membantu racikan tetap simpel, stabil, dan siap dipakai di kolam favorit.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 lg:grid-cols-1 lg:gap-6">
+          <div class="overflow-hidden rounded-[28px] border border-gray-200 bg-white">
+            <div class="aspect-[4/3] overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50 lg:aspect-[5/4]">
+              <img src="/images/product-bottle-1.webp" alt="Detail botol Ikan Mas Harian Formula POV Strike" class="h-full w-full object-cover" loading="lazy" />
+            </div>
+          </div>
+          <div class="overflow-hidden rounded-[28px] border border-gray-200 bg-white">
+            <div class="aspect-[4/3] overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50 lg:aspect-[5/4]">
+              <img src="/images/hero-fishing.webp" alt="Suasana memancing untuk konteks penggunaan Ikan Mas Harian Formula" class="h-full w-full object-cover" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="review" class="border-t border-gray-200 py-18 md:py-24">
+    <div class="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
+      <div class="mb-12 grid grid-cols-1 gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
+        <div class="max-w-2xl">
+          <h2 class="text-2xl font-bold text-gray-800 md:text-3xl">Review Pemancing</h2>
+          <p class="mt-3 text-sm leading-relaxed text-gray-500 md:text-base">Review ini membantu memberi gambaran cepat tentang pengalaman pemakaian, karakter aroma, dan kecocokan formula untuk sesi harian.</p>
+        </div>
+        <div class="flex items-center gap-3 rounded-full border border-gray-200 bg-white px-4 py-3 shadow-sm">
+          <StarRating class="!text-yellow-400" />
+          <div class="text-sm leading-tight">
+            <div class="font-bold text-gray-800">4.8/5 rating</div>
+            <div class="text-gray-500">27 review pemancing</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div id="review-slider" class="hide-scroll -mx-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pb-4 scroll-smooth lg:mx-0 lg:px-0">
+          {reviews.map((review) => (
+            <article class="min-w-[88%] snap-start rounded-[28px] border border-gray-200 bg-white p-6 shadow-sm transition-transform hover:-translate-y-1 hover:shadow-md sm:min-w-[420px] lg:min-w-[calc(33.333%-14px)]">
+              <div class="flex items-center justify-between gap-4">
+                <div>
+                  <h3 class="text-base font-bold text-gray-800 md:text-lg">{review.name}</h3>
+                  <p class="text-sm text-gray-500">{review.city}</p>
+                </div>
+                <span class="text-sm font-bold text-[#1B4332]">{review.score}/5</span>
+              </div>
+              <div class="mt-4 flex items-center gap-2">
+                <StarRating class="!text-yellow-400" />
+                <span class="text-sm font-medium text-gray-500">Review terverifikasi</span>
+              </div>
+              <p class="mt-4 text-sm leading-relaxed text-gray-600 md:text-base">“{review.quote}”</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-8 flex items-center justify-between gap-4">
+          <div class="flex items-center gap-2" aria-hidden="true">
+            {reviews.map((_, idx) => (
+              <span class:list={['review-dot h-2 rounded-full bg-gray-300 transition-all', idx === 0 ? 'w-8 bg-[#1B4332]' : 'w-2']} data-review-dot={idx}></span>
+            ))}
+          </div>
+          <div class="flex items-center gap-3">
+            <button id="review-prev" type="button" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-700 shadow-sm transition hover:border-[#1B4332] hover:text-[#1B4332]" aria-label="Review sebelumnya">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+            <button id="review-next" type="button" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-700 shadow-sm transition hover:border-[#1B4332] hover:text-[#1B4332]" aria-label="Review berikutnya">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="border-t border-gray-200 bg-white py-16 md:py-20">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-center text-2xl font-bold text-gray-800 md:text-3xl">Pertanyaan Umum</h2>
+      <div class="mt-10 space-y-4">
+        {faqs.map(([q, a], idx) => (
+          <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+            <button class="faq-btn flex w-full items-center justify-between px-6 py-4 text-left focus:outline-none">
+              <span class="font-semibold text-gray-800">{q}</span>
+              <svg class:list={['h-5 w-5 text-gray-500 transition-transform duration-200', idx === 0 ? 'rotate-180' : '']} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class:list={['px-6 pb-4 text-sm text-gray-500 md:text-base', idx === 0 ? 'block' : 'hidden faq-content']}>
+              {a}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-[#1B4332] py-20 text-center text-white">
+    <div class="mx-auto max-w-3xl px-4">
+      <h2 class="mb-4 text-3xl font-bold md:text-4xl">Siap Pakai {shortName}?</h2>
+      <p class="mx-auto mb-8 max-w-xl text-gray-300">Order sekarang dan konsultasikan racikan umpan Anda langsung dengan admin POV Strike agar takaran awalnya lebih pas dan tidak perlu banyak trial-error.</p>
+      <div class="flex flex-col justify-center gap-4 sm:flex-row">
+        <a href={`https://wa.me/${whatsappNumber}?text=${whatsappText}`} class="rounded-full bg-[#F77F00] px-8 py-3.5 font-medium text-white shadow transition-colors hover:bg-[#d66e00]">Pesan Sekarang</a>
+        <a href="#review" class="rounded-full border-2 border-white bg-transparent px-8 py-3.5 font-medium text-white transition-colors hover:bg-white hover:text-[#1B4332]">Baca Review Dulu</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+  <MobileCta />
+  <MobileBottomNav />
+  <MobileMenuDrawer />
+  <HomeScript />
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const mainImage = document.getElementById('product-main-image');
+      const thumbs = document.querySelectorAll('.product-thumb');
+
+      thumbs.forEach((thumb) => {
+        thumb.addEventListener('click', () => {
+          const src = thumb.getAttribute('data-image');
+          const alt = thumb.getAttribute('data-alt') || '';
+          if (mainImage && src) {
+            mainImage.setAttribute('src', src);
+            mainImage.setAttribute('alt', alt);
+          }
+
+          thumbs.forEach((item) => {
+            item.classList.remove('border-[#1B4332]', 'ring-2', 'ring-[#1B4332]/10');
+            item.classList.add('border-gray-200');
+          });
+
+          thumb.classList.remove('border-gray-200');
+          thumb.classList.add('border-[#1B4332]', 'ring-2', 'ring-[#1B4332]/10');
+        });
+      });
+
+      const slider = document.getElementById('review-slider');
+      const prevBtn = document.getElementById('review-prev');
+      const nextBtn = document.getElementById('review-next');
+      const dots = document.querySelectorAll('[data-review-dot]');
+
+      const getCardWidth = () => {
+        const firstCard = slider?.querySelector('article');
+        return firstCard ? firstCard.getBoundingClientRect().width + 20 : 0;
+      };
+
+      const updateDots = () => {
+        if (!slider) return;
+        const step = getCardWidth() || 1;
+        const index = Math.round(slider.scrollLeft / step);
+        dots.forEach((dot, idx) => {
+          dot.classList.toggle('w-8', idx === index);
+          dot.classList.toggle('bg-[#1B4332]', idx === index);
+          dot.classList.toggle('w-2.5', idx !== index);
+          dot.classList.toggle('bg-gray-300', idx !== index);
+        });
+      };
+
+      prevBtn?.addEventListener('click', () => {
+        slider?.scrollBy({ left: -(getCardWidth() || 320), behavior: 'smooth' });
+      });
+
+      nextBtn?.addEventListener('click', () => {
+        slider?.scrollBy({ left: getCardWidth() || 320, behavior: 'smooth' });
+      });
+
+      slider?.addEventListener('scroll', updateDots, { passive: true });
+      updateDots();
+    });
+  </script>
+</Layout>

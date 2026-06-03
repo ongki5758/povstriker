@@ -1,0 +1,26 @@
+<div id="mobile-menu-overlay" class="pointer-events-none fixed inset-0 z-[60] bg-black/60 opacity-0 backdrop-blur-sm transition-opacity duration-300"></div>
+<div id="mobile-menu-drawer" class="fixed inset-y-0 left-0 z-[70] flex w-[280px] -translate-x-full flex-col bg-white shadow-2xl transition-transform duration-300">
+  <div class="flex items-center justify-between border-b border-gray-200 p-5">
+    <div class="flex items-center gap-3">
+      <img src="/logo-pov-strike.svg" alt="Logo POV Strike" class="h-10 w-auto" loading="lazy" />
+    </div>
+    <button id="close-menu-btn" class="-mr-2 rounded-full bg-gray-50 p-2 text-gray-500 transition-colors hover:text-[#F77F00]" aria-label="Tutup Menu"><svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+  </div>
+  <div class="flex-grow overflow-y-auto py-4">
+    <nav class="flex flex-col space-y-1 px-5">
+      {[
+        ['/#shop', 'Belanja Sekarang'],
+        ['/#fish-species', 'Pilih Target Ikan'],
+        ['/#bundles', 'Paket Bundling Hemat'],
+        ['/#academy', 'Akademi Mancing'],
+        ['/#reviews', 'Ulasan Pelanggan'],
+      ].map(([href, label]) => (
+        <a href={href} class="mobile-menu-link border-b border-gray-200/50 py-3 text-base font-medium text-gray-800 transition-colors hover:text-[#1B4332]">{label}</a>
+      ))}
+    </nav>
+  </div>
+  <div class="mt-auto border-t border-gray-200 bg-[#F8F9FA]/50 p-5">
+    <p class="mb-3 text-center text-xs font-medium text-gray-500">Ada pertanyaan?</p>
+    <a href="https://wa.me/6280000000000?text=Halo%20POV%20Strike%2C%20saya%20ingin%20konsultasi%20produk." target="_blank" rel="noopener noreferrer" class="flex w-full items-center justify-center rounded-xl border border-gray-200 bg-white py-2.5 text-sm font-semibold text-gray-800 shadow-sm transition-colors hover:border-[#1B4332] hover:text-[#1B4332]">Hubungi Admin WhatsApp</a>
+  </div>
+</div>

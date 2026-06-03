@@ -1,14 +1,56 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+	lang?: string;
+	bodyClass?: string;
+	ogImage?: string;
+	canonical?: string;
+}
+
+const siteName = 'POV Strike';
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://povstrike.com';
+const {
+	title = 'POV Strike',
+	description = 'Essen pancing premium POV Strike untuk perairan Indonesia. Lebih banyak strike tanpa nunggu lama.',
+	lang = 'id',
+	bodyClass = '',
+	ogImage = `${siteUrl}/og-image.jpg`,
+	canonical = siteUrl,
+} = Astro.props;
+---
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
 		<link rel="icon" href="/favicon.ico" />
+		<link rel="canonical" href={canonical} />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="robots" content="index,follow" />
+		<meta name="theme-color" content="#1B4332" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content={siteName} />
+		<meta property="og:locale" content="id_ID" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:image:alt" content={title} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+		<meta name="twitter:site" content="@povstrike" />
+		<slot name="head" />
 	</head>
-	<body>
+	<body class={bodyClass}>
 		<slot />
 	</body>
 </html>

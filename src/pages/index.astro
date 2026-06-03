@@ -1,11 +1,230 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/home/Header.astro';
+import HeroSection from '../components/home/HeroSection.astro';
+import TrustBar from '../components/home/TrustBar.astro';
+import FishSpeciesSection from '../components/home/FishSpeciesSection.astro';
+import BestSellersSection from '../components/home/BestSellersSection.astro';
+import BundlesSection from '../components/home/BundlesSection.astro';
+import CatchGallerySection from '../components/home/CatchGallerySection.astro';
+import BenefitsSection from '../components/home/BenefitsSection.astro';
+import HowToUseSection from '../components/home/HowToUseSection.astro';
+import QuizSection from '../components/home/QuizSection.astro';
+import AcademySection from '../components/home/AcademySection.astro';
+import TestimonialsSection from '../components/home/TestimonialsSection.astro';
+import FaqSection from '../components/home/FaqSection.astro';
+import FinalCtaSection from '../components/home/FinalCtaSection.astro';
+import Footer from '../components/home/Footer.astro';
+import MobileCta from '../components/home/MobileCta.astro';
+import MobileBottomNav from '../components/home/MobileBottomNav.astro';
+import MobileMenuDrawer from '../components/home/MobileMenuDrawer.astro';
+import HomeScript from '../components/home/HomeScript.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const fishSpecies = [
+  {
+    name: 'Ikan Mas',
+    desc: 'Formula harian dan galatama untuk sambaran lebih agresif.',
+    highlight: 'Harian + Galatama',
+    image: '/images/gallery-fish-1.webp',
+    alt: 'Ikan mas untuk formula POV Strike',
+  },
+  {
+    name: 'Nila',
+    desc: 'Aroma bersih khas nila untuk kolam dan liaran.',
+    highlight: 'Kolam & Liaran',
+    image: '/images/gallery-fish-2.webp',
+    alt: 'Ikan nila untuk formula POV Strike',
+  },
+  {
+    name: 'Lele',
+    desc: 'Aroma kuat malam hari saat ikan lele aktif mencari makan.',
+    highlight: 'Strike Malam',
+    image: '/images/gallery-catch-1.webp',
+    alt: 'Ikan lele untuk formula POV Strike',
+  },
+  {
+    name: 'Patin',
+    desc: 'Essen andalan sungai dan kolam untuk perairan dalam.',
+    highlight: 'Sungai & Kolam',
+    image: '/images/gallery-catch-2.webp',
+    alt: 'Ikan patin untuk formula POV Strike',
+  },
+  {
+    name: 'Bawal',
+    desc: 'Formula tajam khusus menarik perhatian bawal agresif.',
+    highlight: 'Tarikan Agresif',
+    image: '/images/gallery-fish-1.webp',
+    alt: 'Ikan bawal untuk formula POV Strike',
+  },
+  {
+    name: 'Bandeng',
+    desc: 'Formula khusus bandeng untuk aroma yang lebih cepat menarik gerombolan.',
+    highlight: 'Gerombolan Cepat Datang',
+    image: '/images/gallery-fish-2.webp',
+    alt: 'Ikan bandeng untuk formula POV Strike',
+  },
+];
+
+const products = [
+  ['Ikan Mas Harian Formula', 'Ikan Mas Harian', '4.8', 'Rp39.000'],
+  ['Ikan Mas Galatama Formula', 'Galatama', '4.9', 'Rp45.000'],
+  ['Nila Harian Formula', 'Nila Kolam', '4.8', 'Rp39.000'],
+  ['Nila Lomba Formula', 'Lomba Nila', '4.9', 'Rp45.000'],
+  ['Lele Malam Formula', 'Mancing Malam', '4.8', 'Rp39.000'],
+  ['Lele Galatama Formula', 'Galatama Lele', '4.9', 'Rp45.000'],
+  ['Patin Sungai Formula', 'Patin Sungai', '4.8', 'Rp42.000'],
+  ['Bawal Kolam Formula', 'Bawal Kolam', '4.8', 'Rp42.000'],
+].map(([name, tag, rating, price]) => ({ name, tag, rating, price }));
+
+const bundles = [
+  {
+    title: 'Ikan Mas Harian Formula',
+    desc: 'Rekomendasi utama untuk kolam harian dengan aroma stabil dan sambaran lebih cepat.',
+    price: 'Rp39.000',
+    featured: false,
+    badge: 'Rekomendasi #1',
+    image: '/images/product-pov-ikan-mas.webp',
+    alt: 'Produk Ikan Mas Harian POV Strike',
+    href: '/produk/ikan-mas-harian-formula',
+  },
+  {
+    title: 'Lele Malam Formula',
+    desc: 'Highlight product untuk sesi malam dengan karakter aroma lebih kuat dan tahan lama.',
+    price: 'Rp39.000',
+    featured: false,
+    badge: 'Rekomendasi #2',
+    image: '/images/product-pov-lele.webp',
+    alt: 'Produk Lele Malam POV Strike',
+    href: '/produk',
+  },
+  {
+    title: 'All Rounder Pack',
+    desc: 'Pilihan terbaik untuk pemancing yang butuh 1 paket serbaguna lintas kondisi dan target ikan.',
+    price: 'Rp149.000',
+    featured: true,
+    badge: 'Rekomendasi #3',
+    image: '/images/product-pov-ikan-mas.webp',
+    alt: 'Produk highlight All Rounder Pack POV Strike',
+    href: '/produk',
+  },
+];
+
+const catches = [
+  ['Ikan Mas 4.2kg', 'Kediri'],
+  ['Patin Sungai 6kg', 'Bekasi'],
+  ['Lele Monster', 'Lamongan'],
+  ['Bawal Kolam', 'Bandung'],
+  ['Nila Harian', 'Solo'],
+  ['Galatama Strike', 'Palembang'],
+].map(([title, city]) => ({ title, city }));
+
+const benefits = [
+  ['Formula Spesifik Ikan', 'Setiap formula diracik berdasarkan kebiasaan makan ikan target.'],
+  ['Teruji di Perairan Lokal', 'Dibuat khusus untuk kolam, sungai, galatama, dan pancingan harian di Indonesia.'],
+  ['Sangat Mudah Dicampur', 'Cukup tambahkan beberapa tetes ke umpan Anda dan aduk merata.'],
+  ['Pengiriman Cepat', 'Dikemas aman dan dikirim ke seluruh pelosok Nusantara.'],
+].map(([title, desc]) => ({ title, desc }));
+
+const academy = [
+  ['Panduan Ikan Mas', 'Essen Terbaik Untuk Ikan Mas Harian', 'Pelajari takaran yang tepat untuk memicu gigitan lebih cepat di kolam harian.'],
+  ['Persiapan Umpan', 'Cara Meracik Umpan Saat Musim Hujan', 'Suhu air turun. Berikut cara mengatur penggunaan formula agar tetap amis.'],
+  ['Tips Lele', 'Formula Mancing Malam Untuk Lele', 'Maksimalkan tarikan Anda pada jam-jam lele aktif mencari makan.'],
+  ['Kompetisi', 'Strategi Galatama Untuk Tarikan Maksimal', 'Kalahkan pemancing lain dengan teknik pencampuran formula tingkat lanjut ini.'],
+].map(([tag, title, desc]) => ({ tag, title, desc }));
+
+const testimonials = [
+  ['Pak Darto', 'Lamongan', 'D', 'Baru coba pertama, langsung strike ikan mas. Aromanya kuat tapi tetap gampang dicampur.'],
+  ['Mas Rian', 'Bekasi', 'R', 'Cocok buat lele malam. Biasanya lama nunggu, ini lebih cepat ada sambaran.'],
+  ['Pak Agus', 'Palembang', 'A', 'Pengiriman cepat, botol aman, formula mantap buat kolam harian.'],
+].map(([name, city, initial, quote]) => ({ name, city, initial, quote }));
+
+const faqs = [
+  ['Cocok untuk ikan apa saja?', 'POV Strike memiliki formula spesifik untuk Ikan Mas, Nila, Lele, Patin, dan Bawal.'],
+  ['Berapa tetes pemakaian?', 'Mulai dengan 3-5 tetes untuk 500g umpan, kemudian sesuaikan dengan kondisi spot pancingan.'],
+  ['Bisa COD?', 'Ya, layanan COD tersedia untuk berbagai wilayah melalui kurir rekanan kami.'],
+  ['Bisa dipakai untuk lomba?', 'Tentu, beberapa formula kami didesain khusus untuk galatama dan lomba memancing.'],
+  ['Aman untuk umpan harian?', 'Ya, sangat aman. Gunakan sebagai atraktan umpan sesuai panduan pemakaian yang disarankan.'],
+].map(([q, a]) => ({ q, a }));
+
+const pageTitle = 'POV Strike | Lebih Banyak Strike. Tanpa Nunggu Lama.';
+const pageDescription = 'POV Strike adalah essen pancing premium untuk pemancing Indonesia dengan formula spesifik target ikan, mudah dicampur, pengiriman cepat, dan dukungan COD.';
+const canonical = 'https://povstrike.com/';
+const ogImage = 'https://povstrike.com/og-image.jpg';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      name: 'POV Strike',
+      url: 'https://povstrike.com',
+      logo: 'https://povstrike.com/logo-pov-strike.svg',
+      sameAs: [],
+    },
+    {
+      '@type': 'WebSite',
+      name: 'POV Strike',
+      url: 'https://povstrike.com',
+      inLanguage: 'id-ID',
+    },
+    {
+      '@type': 'WebPage',
+      name: pageTitle,
+      url: canonical,
+      description: pageDescription,
+      isPartOf: {
+        '@type': 'WebSite',
+        name: 'POV Strike',
+        url: 'https://povstrike.com',
+      },
+    },
+    {
+      '@type': 'Product',
+      name: 'POV Strike Essen Pancing',
+      description: pageDescription,
+      brand: {
+        '@type': 'Brand',
+        name: 'POV Strike',
+      },
+      image: [
+        'https://povstrike.com/og-image.jpg',
+        'https://povstrike.com/images/product-pov-ikan-mas.webp',
+        'https://povstrike.com/images/product-pov-lele.webp',
+      ],
+      category: 'Essen Pancing',
+      offers: {
+        '@type': 'AggregateOffer',
+        priceCurrency: 'IDR',
+        lowPrice: '39000',
+        highPrice: '149000',
+        offerCount: '8',
+        availability: 'https://schema.org/InStock',
+      },
+    },
+  ],
+};
 ---
 
-<Layout>
-	<Welcome />
+<Layout title={pageTitle} description={pageDescription} canonical={canonical} ogImage={ogImage} lang="id" bodyClass="bg-[#F8F9FA] font-sans text-gray-800 antialiased">
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+  </Fragment>
+  <Header />
+  <HeroSection />
+  <TrustBar />
+  <FishSpeciesSection fishSpecies={fishSpecies} />
+  <BestSellersSection products={products} />
+  <BundlesSection bundles={bundles} />
+  <CatchGallerySection catches={catches} />
+  <BenefitsSection benefits={benefits} />
+  <HowToUseSection />
+  <QuizSection />
+  <AcademySection academy={academy} />
+  <TestimonialsSection testimonials={testimonials} />
+  <FaqSection faqs={faqs} />
+  <FinalCtaSection />
+  <Footer />
+  <MobileCta />
+  <MobileBottomNav />
+  <MobileMenuDrawer />
+  <HomeScript />
 </Layout>

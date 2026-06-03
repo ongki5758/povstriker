@@ -1,0 +1,23 @@
+---
+interface Props { benefits: { title: string; desc: string }[] }
+const { benefits } = Astro.props;
+---
+<section class="bg-[#1B4332] py-16 text-white md:py-24">
+  <div class="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
+    <div class="mb-12 text-center">
+      <h2 class="mb-4 text-2xl font-bold md:text-3xl">Mengapa Pemancing Memilih POV Strike</h2>
+      <div class="mx-auto h-1 w-16 rounded bg-[#F77F00]"></div>
+    </div>
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+      {benefits.map((item) => (
+        <div class="text-center">
+          <div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#255742] text-[#F77F00]">
+            <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <h3 class="mb-3 text-lg font-bold">{item.title}</h3>
+          <p class="text-sm text-gray-300">{item.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

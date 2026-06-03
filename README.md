@@ -1,46 +1,59 @@
-# Astro Starter Kit: Basics
+# POV Strike
 
-```sh
-npm create astro@latest -- --template basics
+Website resmi POV Strike berbasis Astro + Tailwind CSS.
+
+## Stack
+- Astro 6
+- Tailwind CSS 4
+- Static site output (`dist/`)
+- Cocok untuk deploy di Cloudflare Pages
+
+## Requirements
+- Node.js 22+
+- npm
+
+## Development
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Aplikasi lokal akan berjalan di `http://localhost:4321`.
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+## Quality check
+```bash
+npm run check
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Production build
+```bash
+npm run build
+```
 
-## 🧞 Commands
+Hasil build akan tersedia di folder:
+```bash
+dist/
+```
 
-All commands are run from the root of the project, from a terminal:
+## Preview build
+```bash
+npm run preview
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Struktur route utama
+- `/` — homepage
+- `/produk` — katalog produk
+- `/produk/ikan-mas-harian-formula` — halaman detail produk
 
-## 👀 Want to learn more?
+## Deploy ke Cloudflare Pages
+Gunakan konfigurasi berikut:
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Framework preset: `Astro`
+- Build command: `npm run build`
+- Build output directory: `dist`
+- Node.js version: `22`
+
+Lihat detail tambahan di [`DEPLOY.md`](./DEPLOY.md).
+
+## Catatan
+Project ini saat ini menggunakan output static, sehingga tidak memerlukan adapter SSR Cloudflare.

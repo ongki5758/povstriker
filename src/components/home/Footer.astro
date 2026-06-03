@@ -1,0 +1,35 @@
+<footer class="border-t border-[#0b1c15] bg-[#112a20] py-12 text-gray-300 md:py-16">
+  <div class="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
+    <div class="mb-12 grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12 lg:grid-cols-4">
+      <div class="lg:pr-8">
+        <a href="/" class="mb-4 inline-flex items-center gap-3">
+          <img src="/logo-pov-strike.svg" alt="Logo POV Strike" class="h-11 w-auto" loading="lazy" />
+        </a>
+        <p class="mb-6 text-sm text-gray-400">Essen pancing premium yang diformulasikan untuk para pemancing Indonesia.</p>
+      </div>
+      <div>
+        <h4 class="mb-4 text-sm font-bold uppercase tracking-wider text-white">Menu</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/#shop" class="transition-colors hover:text-[#F77F00]">Belanja</a></li>
+          <li><a href="/#bundles" class="transition-colors hover:text-[#F77F00]">Paket Bundling</a></li>
+          <li><a href="/#academy" class="transition-colors hover:text-[#F77F00]">Akademi POV Strike</a></li>
+          <li><a href="/#reviews" class="transition-colors hover:text-[#F77F00]">Ulasan</a></li>
+          <li><a href="https://wa.me/6280000000000?text=Halo%20POV%20Strike%2C%20saya%20ingin%20konsultasi%20produk." target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-[#F77F00]">Kontak</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="mb-4 text-sm font-bold uppercase tracking-wider text-white">Jenis Ikan</h4>
+        <ul class="space-y-2 text-sm">
+          {['Ikan Mas', 'Nila', 'Lele', 'Patin', 'Bawal'].map((item) => <li><a href="/#fish-species" class="transition-colors hover:text-[#F77F00]">{item}</a></li>)}
+        </ul>
+      </div>
+      <div>
+        <h4 class="mb-4 text-sm font-bold uppercase tracking-wider text-white">Pembayaran</h4>
+        <div class="flex flex-wrap gap-2 text-xs">{['COD', 'QRIS', 'Transfer Bank', 'E-Wallet'].map((item) => <span class="rounded border border-[#255742] bg-[#1a3f2f] px-3 py-1.5 text-gray-300">{item}</span>)}</div>
+      </div>
+    </div>
+    <div class="flex flex-col items-center justify-between border-t border-[#1a3f2f] pt-8 pb-20 text-center text-xs text-gray-500 md:flex-row md:pb-0">
+      <p>© 2026 POV Strike Indonesia. Hak cipta dilindungi.</p>
+    </div>
+  </div>
+</footer>

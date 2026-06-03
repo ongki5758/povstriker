@@ -1,0 +1,40 @@
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqButtons = document.querySelectorAll('.faq-btn');
+    faqButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = button.nextElementSibling;
+        const icon = button.querySelector('svg');
+        content?.classList.toggle('hidden');
+        icon?.classList.toggle('rotate-180');
+      });
+    });
+
+    const burgerBtn = document.getElementById('mobile-menu-btn');
+    const closeBtn = document.getElementById('close-menu-btn');
+    const overlay = document.getElementById('mobile-menu-overlay');
+    const drawer = document.getElementById('mobile-menu-drawer');
+    const mobileLinks = document.querySelectorAll('.mobile-menu-link');
+
+    const openMenu = () => {
+      overlay?.classList.remove('opacity-0', 'pointer-events-none');
+      overlay?.classList.add('opacity-100', 'pointer-events-auto');
+      drawer?.classList.remove('-translate-x-full');
+      drawer?.classList.add('translate-x-0');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeMenu = () => {
+      overlay?.classList.remove('opacity-100', 'pointer-events-auto');
+      overlay?.classList.add('opacity-0', 'pointer-events-none');
+      drawer?.classList.remove('translate-x-0');
+      drawer?.classList.add('-translate-x-full');
+      document.body.style.overflow = '';
+    };
+
+    burgerBtn?.addEventListener('click', openMenu);
+    closeBtn?.addEventListener('click', closeMenu);
+    overlay?.addEventListener('click', closeMenu);
+    mobileLinks.forEach((link) => link.addEventListener('click', closeMenu));
+  });
+</script>

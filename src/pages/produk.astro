@@ -1,0 +1,278 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/home/Header.astro';
+import Footer from '../components/home/Footer.astro';
+import MobileCta from '../components/home/MobileCta.astro';
+import MobileBottomNav from '../components/home/MobileBottomNav.astro';
+import MobileMenuDrawer from '../components/home/MobileMenuDrawer.astro';
+import HomeScript from '../components/home/HomeScript.astro';
+import StarRating from '../components/StarRating.astro';
+
+const whatsappNumber = '6280000000000';
+const pageTitle = '10 Produk POV Strike | Semua Produk Essen Pancing';
+const pageDescription = 'Lihat 10 produk POV Strike untuk ikan mas, lele, nila, patin, dan kebutuhan mancing harian sampai galatama.';
+const canonical = 'https://povstrike.com/produk';
+const ogImage = 'https://povstrike.com/images/product-pov-ikan-mas.webp';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://povstrike.com/' },
+        { '@type': 'ListItem', position: 2, name: 'Produk', item: canonical },
+      ],
+    },
+    {
+      '@type': 'CollectionPage',
+      name: pageTitle,
+      url: canonical,
+      description: pageDescription,
+      inLanguage: 'id-ID',
+    },
+  ],
+};
+
+const products = [
+  {
+    name: 'Ikan Mas Harian Formula',
+    tag: 'Best Seller',
+    type: 'Ikan Mas',
+    price: 'Rp39.000',
+    rating: '4.8',
+    desc: 'Formula harian dengan aroma stabil, mudah dicampur, dan cocok untuk kolam favorit.',
+    image: '/images/product-pov-ikan-mas.webp',
+    href: '/produk/ikan-mas-harian-formula',
+    available: true,
+  },
+  {
+    name: 'Ikan Mas Galatama Formula',
+    tag: 'Kompetisi',
+    type: 'Ikan Mas',
+    price: 'Rp45.000',
+    rating: '4.9',
+    desc: 'Dirancang untuk kebutuhan tarikan lebih agresif saat sesi galatama dan lomba.',
+    image: '/images/product-bottle-1.webp',
+    href: '/produk',
+    available: false,
+  },
+  {
+    name: 'Ikan Mas Umpan Dasar Formula',
+    tag: 'Racikan',
+    type: 'Ikan Mas',
+    price: 'Rp41.000',
+    rating: '4.7',
+    desc: 'Pilihan untuk memperkuat racikan dasar tanpa membuat aroma terasa terlalu berat.',
+    image: '/images/product-bottle-2.webp',
+    href: '/produk',
+    available: false,
+  },
+  {
+    name: 'Lele Malam Formula',
+    tag: 'Strike Malam',
+    type: 'Lele',
+    price: 'Rp39.000',
+    rating: '4.8',
+    desc: 'Karakter aroma lebih kuat untuk membantu menarik respons lele saat malam hari.',
+    image: '/images/product-pov-lele.webp',
+    href: '/produk',
+    available: false,
+  },
+  {
+    name: 'Lele Galatama Formula',
+    tag: 'Galatama',
+    type: 'Lele',
+    price: 'Rp45.000',
+    rating: '4.8',
+    desc: 'Cocok untuk pemancing yang butuh karakter lebih tajam saat sesi lele kompetitif.',
+    image: '/images/hero-fishing.webp',
+    href: '/produk',
+    available: false,
+  },
+  {
+    name: 'Nila Harian Formula',
+    tag: 'Kolam Harian',
+    type: 'Nila',
+    price: 'Rp39.000',
+    rating: '4.7',
+    desc: 'Cocok untuk pemancing yang butuh formula simpel untuk nila kolam dan spot santai.',
+    image: '/images/gallery-fish-2.webp',
+    href: '/produk',
+    available: false,
+  },
+  {
+    name: 'Nila Lomba Formula',
+    tag: 'Lomba',
+    type: 'Nila',
+    price: 'Rp44.000',
+    rating: '4.8',
+    desc: 'Diformulasikan untuk membantu performa racikan saat target nila lebih selektif.',
+    image: '/images/gallery-fish-1.webp',
+    href: '/produk',
+    available: false,
+  },
+  {
+    name: 'Patin Sungai Formula',
+    tag: 'Sungai',
+    type: 'Patin',
+    price: 'Rp42.000',
+    rating: '4.8',
+    desc: 'Formula untuk spot patin dengan karakter air lebih dalam dan arus yang berubah.',
+    image: '/images/gallery-catch-2.webp',
+    href: '/produk',
+    available: false,
+  },
+  {
+    name: 'Patin Kolam Formula',
+    tag: 'Kolam',
+    type: 'Patin',
+    price: 'Rp42.000',
+    rating: '4.7',
+    desc: 'Lebih cocok untuk pemakaian santai di kolam dengan respons yang tetap stabil.',
+    image: '/images/gallery-catch-1.webp',
+    href: '/produk',
+    available: false,
+  },
+  {
+    name: 'All Rounder Pack',
+    tag: 'Bundle',
+    type: 'Multi Target',
+    price: 'Rp149.000',
+    rating: '4.9',
+    desc: 'Paket pilihan untuk pemancing yang ingin stok formula serbaguna untuk beberapa kondisi.',
+    image: '/images/hero-fishing-2.webp',
+    href: '/produk',
+    available: false,
+  },
+];
+
+const features = [
+  ['10 Produk Terpilih', 'Katalog difokuskan hanya untuk produk utama POV Strike.', 'collection'],
+  ['Mudah Dibandingkan', 'Setiap produk diringkas agar cepat dipindai sebelum pilih.', 'compare'],
+  ['Siap Konsultasi', 'Jika bingung memilih, admin siap bantu lewat WhatsApp.', 'support'],
+];
+---
+
+<Layout title={pageTitle} description={pageDescription} canonical={canonical} ogImage={ogImage} lang="id" bodyClass="bg-[#F8F9FA] font-sans text-gray-800 antialiased">
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+  </Fragment>
+  <Header />
+
+  <section class="border-b border-gray-200 bg-white">
+    <div class="mx-auto max-w-[1200px] px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+      <div class="mb-6 text-sm text-gray-500">
+        <a href="/" class="transition-colors hover:text-[#1B4332]">Home</a>
+        <span class="mx-2">/</span>
+        <span class="text-gray-800">Produk</span>
+      </div>
+
+      <div class="max-w-4xl">
+        <div class="mb-4 flex flex-wrap items-center gap-3">
+          <span class="rounded-full bg-[#1B4332] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white">10 Produk</span>
+          <span class="rounded-full bg-orange-100 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[#F77F00]">POV Strike Catalog</span>
+        </div>
+        <h1 class="text-3xl leading-tight font-bold text-gray-800 md:text-5xl">Semua Produk POV Strike dalam 1 Halaman yang Ringkas dan Mudah Dipilih</h1>
+        <p class="mt-4 max-w-3xl text-base leading-relaxed text-gray-500 md:text-lg">
+          Katalog ini menampilkan 10 produk utama POV Strike. Fokusnya sederhana: bantu pengunjung melihat semua opsi dengan cepat, membandingkan singkat, lalu langsung masuk ke detail produk yang paling relevan.
+        </p>
+
+        <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          {features.map(([title, desc, icon]) => (
+            <div class="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm transition-transform hover:-translate-y-1 hover:shadow-md">
+              <div class="flex items-start gap-3">
+                <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#1B4332]/8 text-[#1B4332]">
+                  {icon === 'collection' && <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h10"></path></svg>}
+                  {icon === 'compare' && <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 0L5 11m4-4 4 4M15 7v10m0 0-4-4m4 4 4-4"></path></svg>}
+                  {icon === 'support' && <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4-.93L3 17l1.25-3.333A6.904 6.904 0 014 10c0-3.866 3.582-7 8-7s8 3.134 8 7z"></path></svg>}
+                </div>
+                <div>
+                  <div class="text-sm font-bold text-[#1B4332] md:text-base">{title}</div>
+                  <p class="mt-1 text-sm leading-relaxed text-gray-500">{desc}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="produk-grid" class="py-16 md:py-20">
+    <div class="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
+      <div class="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+        <div>
+          <h2 class="text-2xl font-bold text-gray-800 md:text-3xl">10 Produk Utama</h2>
+          <p class="mt-2 text-sm text-gray-500 md:text-base">Tampilan dibuat lebih efisien supaya produk mudah dipindai tanpa section yang terlalu panjang.</p>
+        </div>
+        <div class="text-sm text-gray-500"><span class="font-bold text-[#1B4332]">{products.length}</span> produk ditampilkan</div>
+      </div>
+
+      <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
+        {products.map((product) => {
+          const whatsappText = encodeURIComponent(`Halo POV Strike, saya ingin tanya produk ${product.name}. Mohon info stok dan rekomendasinya.`);
+          return (
+            <article class:list={['group overflow-hidden rounded-[24px] bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg', product.tag === 'Best Seller' ? 'border-2 border-[#1B4332]/15 ring-1 ring-[#1B4332]/10' : 'border border-gray-200']}>
+              <div class="relative aspect-square overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50">
+                <span class:list={['absolute top-4 left-4 z-10 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider backdrop-blur-sm', product.tag === 'Best Seller' ? 'bg-[#1B4332] text-white' : 'bg-white/90 text-[#1B4332]']}>
+                  {product.tag}
+                </span>
+                {product.tag === 'Best Seller' && <span class="absolute top-4 right-4 z-10 rounded-full bg-[#F77F00] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white">Recommended</span>}
+                <img src={product.image} alt={product.name} class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+              </div>
+
+              <div class="p-5 md:p-6">
+                <div class="mb-3 flex flex-wrap items-center gap-2">
+                  <span class="rounded-full bg-[#1B4332]/8 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[#1B4332]">{product.type}</span>
+                  {!product.available && <span class="rounded-full bg-gray-100 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-gray-500">By Request</span>}
+                </div>
+
+                <h3 class="text-lg leading-tight font-bold text-gray-800 md:text-xl">{product.name}</h3>
+                <p class="mt-2 text-sm leading-relaxed text-gray-500">{product.desc}</p>
+
+                <div class="mt-4 flex items-center gap-2 text-sm font-semibold text-gray-700">
+                  <StarRating count={1} class="!text-yellow-400" />
+                  <span>{product.rating} / 5 rating</span>
+                </div>
+
+                <div class="mt-5 flex items-end justify-between gap-3 border-t border-gray-100 pt-4">
+                  <div>
+                    <div class="text-2xl font-bold text-[#1B4332]">{product.price}</div>
+                    <div class="mt-1 text-xs font-medium uppercase tracking-wider text-gray-400">per botol / paket</div>
+                  </div>
+                  {product.tag === 'Best Seller' && <div class="text-right text-xs font-semibold text-[#1B4332]">Produk paling banyak dilihat</div>}
+                </div>
+
+                <div class="mt-5 grid grid-cols-2 gap-3">
+                  <a href={product.available ? product.href : `https://wa.me/${whatsappNumber}?text=${whatsappText}`} class:list={['inline-flex items-center justify-center rounded-full px-4 py-3 text-sm font-medium transition-colors', product.available ? 'bg-[#1B4332] text-white hover:bg-[#133224]' : 'bg-[#F77F00] text-white hover:bg-[#d66e00]']}>
+                    {product.available ? 'Lihat Detail' : 'Tanya Produk'}
+                  </a>
+                  <a href={`https://wa.me/${whatsappNumber}?text=${whatsappText}`} class="inline-flex items-center justify-center rounded-full border-2 border-gray-200 bg-white px-4 py-3 text-sm font-medium text-gray-800 transition-colors hover:border-[#1B4332] hover:text-[#1B4332]">
+                    WhatsApp
+                  </a>
+                </div>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-[#1B4332] py-20 text-center text-white">
+    <div class="mx-auto max-w-3xl px-4">
+      <h2 class="mb-4 text-3xl font-bold md:text-4xl">Masih Bingung Pilih Produk?</h2>
+      <p class="mx-auto mb-8 max-w-xl text-gray-300">Ceritakan target ikan dan jenis spot Anda. Admin POV Strike bantu pilihkan formula yang paling relevan.</p>
+      <div class="flex flex-col justify-center gap-4 sm:flex-row">
+        <a href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Halo POV Strike, saya ingin dibantu pilih produk yang paling cocok untuk kebutuhan mancing saya.')}`} class="rounded-full bg-[#F77F00] px-8 py-3.5 font-medium text-white shadow transition-colors hover:bg-[#d66e00]">Konsultasi Sekarang</a>
+        <a href="/produk/ikan-mas-harian-formula" class="rounded-full border-2 border-white bg-transparent px-8 py-3.5 font-medium text-white transition-colors hover:bg-white hover:text-[#1B4332]">Lihat Best Seller</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+  <MobileCta />
+  <MobileBottomNav />
+  <MobileMenuDrawer />
+  <HomeScript />
+</Layout>

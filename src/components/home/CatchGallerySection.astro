@@ -1,0 +1,23 @@
+---
+interface Props { catches: { title: string; city: string }[] }
+const { catches } = Astro.props;
+---
+<section class="border-t border-gray-200 bg-white py-16">
+  <div class="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
+    <div class="mb-10 text-center">
+      <h2 class="mb-2 text-2xl font-bold text-gray-800 md:text-3xl">Tangkapan Nyata, Bukti Nyata</h2>
+      <p class="mx-auto max-w-2xl text-sm text-gray-500 md:text-base">Karena pemancing butuh bukti tarikan, bukan sekadar janji.</p>
+    </div>
+    <div class="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:gap-6">
+      {catches.map((item, index) => (
+        <div class:list={['group relative overflow-hidden rounded-xl bg-gray-100', index === 1 ? 'aspect-[4/5] row-span-2 md:aspect-square md:row-span-1' : 'aspect-square', index === 5 ? 'hidden md:block' : '']}>
+          <img src={index % 2 === 0 ? '/images/gallery-fish-1.webp' : '/images/gallery-fish-2.webp'} alt={item.title} class="h-full w-full object-cover" loading="lazy" />
+          <div class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/80 via-black/20 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <span class="text-sm font-bold text-white md:text-base">{item.title}</span>
+            <div class="mt-1 flex items-center text-xs text-gray-300"><svg class="mr-1 h-3 w-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>{item.city}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
