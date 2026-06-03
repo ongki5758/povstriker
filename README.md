@@ -32,9 +32,19 @@ Output build Cloudflare:
 npm run preview
 ```
 
+Perintah ini akan build Astro lebih dulu lalu menjalankan:
+```bash
+wrangler dev --config dist/server/wrangler.json
+```
+
 ## Deploy
 ```bash
 npm run deploy
+```
+
+Perintah ini akan build Astro lebih dulu lalu menjalankan:
+```bash
+wrangler deploy --config dist/server/wrangler.json
 ```
 
 ## Route utama
@@ -43,7 +53,7 @@ npm run deploy
 - `/produk/ikan-mas-harian-formula`
 
 ## Cloudflare Worker setup
-Project ini sekarang menggunakan Astro Cloudflare adapter, sehingga cocok untuk workflow deploy berbasis Worker/Wrangler.
+Project ini sekarang menggunakan Astro Cloudflare adapter, sehingga cocok untuk workflow deploy berbasis Worker/Wrangler. Konfigurasi runtime final dihasilkan ke `dist/server/wrangler.json` saat build.
 
 Environment variables yang umumnya dibutuhkan di platform deploy Cloudflare:
 - `CLOUDFLARE_API_TOKEN`

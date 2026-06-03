@@ -1,11 +1,5 @@
 name = "povstriker"
-main = "worker.js"
 compatibility_date = "2026-06-03"
 
-[[kv_namespaces]]
-binding = "SESSION"
-id = "SESSION_KV_NAMESPACE_ID"
-
-[assets]
-directory = "dist/client"
-binding = "ASSETS"
+# Runtime bindings are configured from the Astro Cloudflare build output.
+# Deploy using: wrangler deploy --config dist/server/wrangler.json

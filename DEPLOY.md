@@ -8,6 +8,8 @@ Project ini menggunakan `@astrojs/cloudflare` adapter dan workflow deploy berbas
 - Deploy command: `npm run deploy`
 - Preview/local worker command: `npm run preview`
 
+> `npm run deploy` akan menjalankan `npm run build` lebih dulu, lalu deploy dengan konfigurasi hasil build di `dist/server/wrangler.json`.
+
 ## Required Cloudflare bindings
 Astro Cloudflare adapter untuk project ini disiapkan untuk runtime yang realistis ke depan:
 - `ASSETS` — static assets dari `dist/client`
@@ -18,7 +20,7 @@ Tambahan image binding tidak diwajibkan karena adapter disetel ke `imageService:
 ## Output build
 - Static assets: `dist/client`
 - Server bundle: `dist/server`
-- Worker entry shim: `worker.js`
+- Wrangler config output: `dist/server/wrangler.json`
 
 ## Environment variables
 Set environment variable berikut di platform deploy Anda:
@@ -54,6 +56,11 @@ Token harus memiliki minimal permission:
 Build:
 ```bash
 npm run build
+```
+
+Preview:
+```bash
+npm run preview
 ```
 
 Deploy:
